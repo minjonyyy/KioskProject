@@ -11,7 +11,7 @@ public class Main {
         menuItems.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
         menuItems.add(new MenuItem("SmokeShack", 8.9, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거"));
         menuItems.add(new MenuItem("ShackBurger", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
-        menuItems.add(new MenuItem("ShackBurger", 5.4, "비프패티를 기반으로 야채가 들어간 기본버거"));
+        menuItems.add(new MenuItem("Hamburger", 5.4, "비프패티를 기반으로 야채가 들어간 기본버거"));
 
         Scanner sc = new Scanner(System.in);
 
@@ -30,14 +30,9 @@ public class Main {
             if (num==0) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
-            } else if (num==1){
-                System.out.println("ShackBurger을 선택하셨습니다. 6,900원을 결제해주세요.");
-            } else if (num==2){
-                System.out.println("SmokeShack을 선택하셨습니다. 8,900원을 결제해주세요.");
-            } else if (num==3){
-                System.out.println("Cheeseburger을 선택하셨습니다. 6,900원을 결제해주세요.");
-            } else if (num==4) {
-                System.out.println("Hamburger을 선택하셨습니다. 5,400원을 결제해주세요.");
+            } else if (num>=1 && num<=5){
+                MenuItem item = menuItems.get(num-1);
+                System.out.println("선택한 메뉴: < " + item.name + " | " + "W " + item.price + " | " + item.comment + " >");
             } else {
                 System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
             }
