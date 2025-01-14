@@ -24,13 +24,16 @@ public class Main {
         menus.add(Desserts);
 
         // 테스트용 출력
-        for (int i=0; i< menus.size(); i++){
-            System.out.println("[ " + menus.get(i).getMenuCategory() + " MENU ]");
-        }
+//        for (int i=0; i< menus.size(); i++){
+//            System.out.println("[ " + menus.get(i).getMenuCategory() + " MENU ]");
+//        }
         // 테스트용 출력
-        Burgers.printMenuItems();
+//        System.out.println("-------테스트1-------");
+//        Burgers.printMenuItems();
+//        System.out.println("-------테스트2-------");
+//        menus.get(0).printMenuItems();
 
-//        Kiosk kiosk = new Kiosk(menuItems);
-//        kiosk.start();
+        Kiosk kiosk = new Kiosk(menus);
+        kiosk.start();
     }
 }

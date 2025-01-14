@@ -6,7 +6,7 @@ import java.util.List;
 public class Menu {
     // Menu 클래스의 필드
     private final String menuCategory;
-    private List<MenuItem> menuItems;
+    private final List<MenuItem> menuItems;
 
     // 생성자
     public Menu(String menuCategory){
@@ -31,10 +31,11 @@ public class Menu {
         }
     }
 
+    public List<MenuItem> getMenuItems(){
+        return menuItems;
+    }
 
-//    public void printMenuCategory(){
-//        for (int i=0; i<)
-//    }
+
 
 
 }
