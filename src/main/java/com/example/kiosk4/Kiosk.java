@@ -20,7 +20,7 @@ public class Kiosk {
 
             for (int i=0; i< menuItems.size();i++){
                 MenuItem item = menuItems.get(i);
-                System.out.println((i+1) +". "+ item.name + " | " + "W " + item.price + " | " + item.comment);
+                System.out.println((i+1) +". "+ item.name + " | " + "W " + item.price + " | " + item.info);
             }
             System.out.println("0. 종료      | 종료");
 
@@ -32,7 +32,7 @@ public class Kiosk {
                 break;
             } else if (num>=1 && num<=5){
                 MenuItem item = menuItems.get(num-1);
-                System.out.println("선택한 메뉴: < " + item.name + " | " + "W " + item.price + " | " + item.comment + " >");
+                System.out.println("선택한 메뉴: < " + item.name + " | " + "W " + item.price + " | " + item.info + " >");
             } else {
                 System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
             }
