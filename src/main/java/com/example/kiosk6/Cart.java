@@ -1,7 +1,5 @@
 package com.example.kiosk6;
 
-import com.example.kiosk6.MenuItem;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +7,7 @@ import java.util.List;
 public class Cart {
 
     private final List<MenuItem> carts;
+    private double totalPrice;
 
     public Cart(){
         this.carts = new ArrayList<>();
@@ -23,20 +22,25 @@ public class Cart {
     public void printCart(){
         System.out.println("< 장바구니 목록 >");
         for (MenuItem item : carts) {
-            System.out.println(item.getName() + " | " + "W " + item.getPrice() + " | " + item.getInfo());
+            System.out.println(item.getName() + " | W " + item.getPrice() + " | 수량 : ");
         }
+    }
+
+    public void deleteCart(){
+        carts.clear();
     }
 
     public List<MenuItem> getCarts(){
         return carts;
     }
 
-    public double calculatePrice(){
-        double totalPrice=0.0;
+    public double printTotalPrice(){
         for (MenuItem item : carts) {
             totalPrice += item.getPrice();
         }
         return totalPrice;
     }
+
+
 
 }
