@@ -34,10 +34,11 @@ public class Cart {
         return carts;
     }
 
+    public void calculateTotalPrice(MenuItem item){
+        totalPrice += item.getPrice();
+    }
+
     public double printTotalPrice(){
-        for (MenuItem item : carts) {
-            totalPrice += item.getPrice();
-        }
         return totalPrice;
     }
 

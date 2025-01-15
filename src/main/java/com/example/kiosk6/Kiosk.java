@@ -56,18 +56,19 @@ public class Kiosk {
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     cart.printCart();
 
-                    double totalPrice = cart.printTotalPrice();
                     System.out.println("\n[ Total ]");
-                    System.out.println("W " + totalPrice);
+                    double totalPrice = cart.printTotalPrice();
+                    System.out.print("W " + totalPrice);
 
                     System.out.println("\n1. 주문        2. 메뉴판");
                     int orderOrBack =  sc.nextInt();
                     if (orderOrBack == 1){
-                        System.out.println("주문이 완료되었습니다. 금액은 W " + totalPrice +"입니다.");
+                        System.out.print("주문이 완료되었습니다. 금액은 W " + totalPrice + "입니다.");
                     } else if (orderOrBack == 2) {
                         continue;
                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                     break;
+
                 } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
             }
 
@@ -105,7 +106,8 @@ public class Kiosk {
                                     if(selectOrder==1){
                                         cart.addMenuToCart(selectMenuItem);
                                         System.out.println("--------------------");
-                                        cart.printCart(); //임시 출력
+                                        cart.calculateTotalPrice(selectMenuItem);
+                                        cart.printCart();
                                         break;
                                     } else if (selectOrder == 2) {
                                         break;
