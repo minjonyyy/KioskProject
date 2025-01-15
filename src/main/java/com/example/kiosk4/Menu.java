@@ -19,6 +19,7 @@ public class Menu {
         return menuCategory;
     }
 
+    // 메뉴 아이템 추가하는 메서드
     public void addMenuItems(MenuItem item){
         menuItems.add(item);
     }

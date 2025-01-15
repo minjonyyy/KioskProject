@@ -18,6 +18,7 @@ public class Main {
         Menu Drinks = new Menu("DRINKS");
         Menu Desserts = new Menu("DESSERTS");
 
+        // 메뉴판 리스트 생성
         List<Menu> menus = new ArrayList<>();
         menus.add(Burgers);
         menus.add(Drinks);
@@ -33,6 +34,7 @@ public class Main {
 //        System.out.println("-------테스트2-------");
 //        menus.get(0).printMenuItems();
 
+        /// 키오스크 객체 생성 및 시작하는 함수 호출
         Kiosk kiosk = new Kiosk(menus);
         kiosk.start();
     }
