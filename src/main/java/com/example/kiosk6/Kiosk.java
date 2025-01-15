@@ -44,6 +44,13 @@ public class Kiosk {
                 System.out.println("프로그램을 종료합니다.");
                 break;
             }
+
+            if (selectCategoryNum==5) {
+                cart.deleteCart();
+                System.out.println("장바구니가 비워졌습니다.");
+                continue;
+            }
+
             if(selectCategoryNum==4){
                 if(!cart.getCarts().isEmpty()){
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
@@ -57,14 +64,11 @@ public class Kiosk {
                     int orderOrBack =  sc.nextInt();
                     if (orderOrBack == 1){
                         System.out.println("주문이 완료되었습니다. 금액은 W " + totalPrice +"입니다.");
-                    }
+                    } else if (orderOrBack == 2) {
+                        continue;
+                    } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                     break;
-
                 } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
-            } else if (selectCategoryNum==5) {
-                cart.deleteCart();
-                System.out.println("장바구니가 비워졌습니다.");
-                break; //여기서 프로그램이 종료되지 않고 다시 메인메뉴 카테고리가 출력되도록 수정하기
             }
 
             try { //예외 처리를 위한 try-catch문
