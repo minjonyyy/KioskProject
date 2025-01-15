@@ -1,5 +1,7 @@
 package com.example.kiosk4;
 
+import com.example.kiosk6.Cart;
+
 import java.util.ArrayList;
 import java.util.List;
 

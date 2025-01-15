@@ -6,9 +6,12 @@ import java.util.Scanner;
 public class Kiosk {
     private final List<Menu> menus;
     List<MenuItem> menuItems;
+    private final Cart cart;
 
-    public Kiosk(List<Menu> menus){
+    public Kiosk(List<Menu> menus, Cart cart){
+
         this.menus = menus;
+        this.cart = cart;
     }
 
     public void start(){
@@ -61,6 +64,22 @@ public class Kiosk {
                             // 구현해두었던 printMenuItems() 메서드를 사용할 수는 없나? 수정해보기 (59, 62~63)
                             if (selectMenuItemNum>=1 && selectMenuItemNum <= selectCategory.getMenuItems().size()){
                                 System.out.println("선택한 메뉴: < " + selectMenuItem.getName() + " | " + "W " + selectMenuItem.getPrice() + " | " + selectMenuItem.getInfo() + " >");
+
+                                while (true){
+                                    System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
+                                    System.out.println("1. 확인        2. 취소");
+                                    System.out.println("선택 : ");
+                                    int selectOrder = sc.nextInt();
+
+                                    if(selectOrder==1){
+                                        cart.addMenuToCart(selectMenuItem);
+                                        System.out.println("--------------------");
+                                        cart.printCart(); //임시 출력
+                                        break;
+                                    } else if (selectOrder == 2) {
+                                        break;
+                                    } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+                                }
 
                             }
                         } catch (IndexOutOfBoundsException e){ // 0 이나 메뉴판에 없는 숫자 고를 시에 예외처리

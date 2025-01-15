@@ -34,8 +34,10 @@ public class Main {
 //        System.out.println("-------테스트2-------");
 //        menus.get(0).printMenuItems();
 
+        Cart cart = new Cart();
+
         /// 키오스크 객체 생성 및 시작하는 함수 호출
-        Kiosk kiosk = new Kiosk(menus);
+        Kiosk kiosk = new Kiosk(menus, cart);
         kiosk.start();
     }
 }
