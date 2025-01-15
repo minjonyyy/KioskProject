@@ -70,8 +70,8 @@ public class Kiosk {
                         continue;
                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                     break; // 주문 완료시 프로그램 종료
-                }
-            } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+                } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+            }
 
             try { //예외 처리를 위한 try-catch문
                 Menu selectCategory = menus.get(selectCategoryNum-1);
