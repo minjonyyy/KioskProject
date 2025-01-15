@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Kiosk {
     private final List<Menu> menus;
-    List<MenuItem> menuItems;
     private final Cart cart;
 
     public Kiosk(List<Menu> menus, Cart cart){
@@ -30,6 +29,12 @@ public class Kiosk {
 
             System.out.println("0. 종료      | 종료");
 
+            if(!cart.getCarts().isEmpty()){
+                System.out.println("\n[ ORDER MENU ]");
+                System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
+                System.out.println("5. Cancel       | 진행중인 주문을 취소합니다. (장바구니 비우기)");
+            }
+
             //-------------- 사용자 선택1 (메뉴판 선택) -------------------------
             System.out.print("메뉴판을 선택해주세요. : ");
             int selectCategoryNum = sc.nextInt();
@@ -38,6 +43,28 @@ public class Kiosk {
             if (selectCategoryNum==0) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
+            }
+            if(selectCategoryNum==4){
+                if(!cart.getCarts().isEmpty()){
+                    System.out.println("아래와 같이 주문하시겠습니까?\n");
+                    cart.printCart();
+
+                    double totalPrice = cart.printTotalPrice();
+                    System.out.println("\n[ Total ]");
+                    System.out.println("W " + totalPrice);
+
+                    System.out.println("\n1. 주문        2. 메뉴판");
+                    int orderOrBack =  sc.nextInt();
+                    if (orderOrBack == 1){
+                        System.out.println("주문이 완료되었습니다. 금액은 W " + totalPrice +"입니다.");
+                    }
+                    break;
+
+                } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+            } else if (selectCategoryNum==5) {
+                cart.deleteCart();
+                System.out.println("장바구니가 비워졌습니다.");
+                break; //여기서 프로그램이 종료되지 않고 다시 메인메뉴 카테고리가 출력되도록 수정하기
             }
 
             try { //예외 처리를 위한 try-catch문
@@ -68,7 +95,7 @@ public class Kiosk {
                                 while (true){
                                     System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
                                     System.out.println("1. 확인        2. 취소");
-                                    System.out.println("선택 : ");
+                                    System.out.print("선택 : ");
                                     int selectOrder = sc.nextInt();
 
                                     if(selectOrder==1){
@@ -80,7 +107,7 @@ public class Kiosk {
                                         break;
                                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                                 }
-
+                                break;
                             }
                         } catch (IndexOutOfBoundsException e){ // 0 이나 메뉴판에 없는 숫자 고를 시에 예외처리
                             System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
