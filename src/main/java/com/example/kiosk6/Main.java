@@ -24,15 +24,6 @@ public class Main {
         menus.add(Drinks);
         menus.add(Desserts);
 
-        // 테스트용 출력
-//        for (int i=0; i< menus.size(); i++){
-//            System.out.println("[ " + menus.get(i).getMenuCategory() + " MENU ]");
-//        }
-        // 테스트용 출력
-//        System.out.println("-------테스트1-------");
-//        Burgers.printMenuItems();
-//        System.out.println("-------테스트2-------");
-//        menus.get(0).printMenuItems();
 
         Cart cart = new Cart();
 
