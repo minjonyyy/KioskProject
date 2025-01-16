@@ -38,7 +38,7 @@ public class Kiosk {
             }
 
             //-------------- 사용자 선택1 (메뉴판 선택) -------------------------
-            System.out.print("메뉴판을 선택해주세요. : ");
+            System.out.print("\n메뉴판을 선택해주세요. : ");
             int selectCategoryNum = sc.nextInt();
 
             // 0 누르면 프로그램 종료 -> break;
@@ -59,13 +59,13 @@ public class Kiosk {
                 if(!cart.getCarts().isEmpty()){
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     cart.printCart();
-                    System.out.println("  ");
                     cart.printTotalPrice();
 
                     System.out.println("\n1. 주문        2. 메뉴판");
+                    System.out.print("선택 :");
                     int orderOrBack =  sc.nextInt();
                     if (orderOrBack == 1){
-                        System.out.print("주문이 완료되었습니다.  ");
+                        System.out.print("\n주문이 완료되었습니다.  ");
                         cart.printTotalPrice();
                     } else if (orderOrBack == 2) { // 2 고르면 다시 메뉴 선택지로 돌아가기
                         continue;
@@ -85,7 +85,7 @@ public class Kiosk {
                         System.out.println("0. 뒤로가기");
 
                         //-------------- 사용자 선택2 (메뉴 아이템 선택) -------------------------
-                        System.out.print("메뉴를 골라주세요. : ");
+                        System.out.print("\n메뉴를 골라주세요. : ");
                         int selectMenuItemNum = sc.nextInt();
 
                         if (selectMenuItemNum==0) {
@@ -100,7 +100,7 @@ public class Kiosk {
                                 System.out.println("선택한 메뉴: < " + selectMenuItem.getName() + " | " + "W " + selectMenuItem.getPrice() + " | " + selectMenuItem.getInfo() + " >");
 
                                 while (true){ //장바구니 추가 기능
-                                    System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
+                                    System.out.println("\n위 메뉴를 장바구니에 추가하시겠습니까?");
                                     System.out.println("1. 확인        2. 취소");
                                     System.out.print("선택 : ");
                                     int selectOrder = sc.nextInt();
@@ -112,9 +112,10 @@ public class Kiosk {
 
                                         if(isContainCart){ // 만약장바구니에 이미 들어있는 항목이라면?
                                             cart.plusQuantity(selectMenuItem);
+                                            System.out.println("\n"+selectMenuItem.getName()+"이 장바구니에 추가되었습니다.");
                                         } else cart.addMenuToCart(cartItem); //장바구니 추가
 
-                                        System.out.println("--------------------");
+                                        System.out.println("-----------------------");
                                         cart.calculateTotalPrice(); // 메뉴 추가할 때마다 totalPrice 새롭게 계산
                                         if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴가 있다면 ORDER MENU 출력
                                             cart.printCart(); // 장바구니 목록 출력
