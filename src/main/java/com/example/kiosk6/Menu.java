@@ -26,9 +26,7 @@ public class Menu {
 
     public void printMenuItems() {
         for(int i=0; i<menuItems.size(); i++){
-            System.out.print((i+1) + ". " + menuItems.get(i).getName());
-            System.out.print("  | W " + menuItems.get(i).getPrice());
-            System.out.println("| " + menuItems.get(i).getInfo());
+            System.out.println((i+1) + ". " + menuItems.get(i).getName() + " | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getInfo());
         }
     }
 

@@ -60,11 +60,13 @@ public class Kiosk {
             if(selectCategoryNum==4){
                 if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴 아이템이 있을때에만 유효함
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
+                    System.out.println("-----------------------");
                     cart.printCart();
                     cart.printTotalPrice();
+                    System.out.println("-----------------------");
 
-                    System.out.println("\n1. 주문        2. 메뉴판");
-                    System.out.print("선택 :");
+                    System.out.println("1. 주문        2. 메뉴판");
+                    System.out.print("선택 : ");
                     int orderOrBack =  sc.nextInt();
 
                     if (orderOrBack == 1){
