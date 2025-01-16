@@ -16,7 +16,15 @@ public class Main {
 
         // 음료, 디저트 객체 생성
         Menu Drinks = new Menu("DRINKS");
+
+        Drinks.addMenuItems(new MenuItem("Coke", 1.0, "코카콜라"));
+        Drinks.addMenuItems(new MenuItem("Sprite", 1.0, "사이다"));
+        Drinks.addMenuItems(new MenuItem("Lemon Ade", 1.5, "수제 레몬청이 들어간 레몬 에이드"));
+
         Menu Desserts = new Menu("DESSERTS");
+
+        Desserts.addMenuItems(new MenuItem("Cookies", 3.5, "초코칩 쿠키"));
+        Desserts.addMenuItems(new MenuItem("Cake", 4.8, "딸기 / 블루베리 케이크"));
 
         // 메뉴판 리스트 생성
         List<Menu> menus = new ArrayList<>();
