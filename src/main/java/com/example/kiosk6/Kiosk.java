@@ -7,10 +7,12 @@ public class Kiosk {
     private final List<Menu> menus;
     private final Cart cart;
 
+
     public Kiosk(List<Menu> menus, Cart cart){
 
         this.menus = menus;
         this.cart = cart;
+
     }
 
     public void start(){
@@ -105,10 +107,20 @@ public class Kiosk {
                                     int selectOrder = sc.nextInt();
 
                                     if(selectOrder==1){
-                                        cart.addMenuToCart(selectMenuItem); //장바구니 추가
+                                        CartItem cartItem = new CartItem(selectMenuItem.getName(), selectMenuItem.getPrice(), 1);
+
+                                        boolean isContainCart = cart.isContainCart(selectMenuItem); //선택한 메뉴아이템이 장바구니에 있는지 확인하는 로직
+
+                                        if(isContainCart){ // 만약장바구니에 이미 들어있는 항목이라면?
+                                            cart.plusQuantity(selectMenuItem);
+                                        } else cart.addMenuToCart(cartItem); //장바구니 추가
+
                                         System.out.println("--------------------");
-                                        cart.calculateTotalPrice(selectMenuItem); // 메뉴 추가할 때마다 totalPrice 계산
-                                        cart.printCart(); // 장바구니 목록 출력
+                                        cart.calculateTotalPrice(cartItem); // 메뉴 추가할 때마다 totalPrice 계산
+                                        if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴가 있다면 ORDER MENU 출력
+                                            cart.printCart(); // 장바구니 목록 출력
+                                        }
+
                                         break;
                                     } else if (selectOrder == 2) { //2번 취소 누르면 메뉴판으로 돌아가기
                                         break;
