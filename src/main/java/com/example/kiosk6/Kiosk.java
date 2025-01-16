@@ -49,14 +49,16 @@ public class Kiosk {
 
             // 5 누르면 장바구니 초기화
             if (selectCategoryNum==5) {
-                cart.emptyCart();
-                System.out.println("장바구니가 비워졌습니다.");
+                if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴 아이템이 있을때에만 유효함
+                    cart.emptyCart();
+                    System.out.println("장바구니가 비워졌습니다.");
+                } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                 continue;
             }
 
-            // 4 누르면 주문 시작
+            // 4 누르면 장바구니 주문 시작
             if(selectCategoryNum==4){
-                if(!cart.getCarts().isEmpty()){
+                if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴 아이템이 있을때에만 유효함
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     cart.printCart();
                     cart.printTotalPrice();
@@ -64,14 +66,17 @@ public class Kiosk {
                     System.out.println("\n1. 주문        2. 메뉴판");
                     System.out.print("선택 :");
                     int orderOrBack =  sc.nextInt();
+
                     if (orderOrBack == 1){
                         System.out.print("\n주문이 완료되었습니다.  ");
                         cart.printTotalPrice();
+
                     } else if (orderOrBack == 2) { // 2 고르면 다시 메뉴 선택지로 돌아가기
                         continue;
+
                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                     break; // 주문 완료시 프로그램 종료
-                } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+                }
             }
 
             try { //예외 처리를 위한 try-catch문
@@ -79,6 +84,7 @@ public class Kiosk {
 
                 if (selectCategoryNum>=1 && selectCategoryNum<=menus.size()){
                     while(true){ // 뒤로가기 기능을 위한 2중 반복문
+                        // 메뉴 아이템들 출력
                         System.out.println("-----------------------");
                         System.out.println("[ " + selectCategory.getMenuCategory() + " MENU ]");
                         selectCategory.printMenuItems();
@@ -106,23 +112,26 @@ public class Kiosk {
                                     int selectOrder = sc.nextInt();
 
                                     if(selectOrder==1){
+                                        // 1번 누르면 일단 선택했던 메뉴아이템의 속성으로 cartItem으로 객체 생성
                                         CartItem cartItem = new CartItem(selectMenuItem.getName(), selectMenuItem.getPrice(), 1);
 
                                         boolean isContainCart = cart.isContainCart(selectMenuItem); //선택한 메뉴아이템이 장바구니에 있는지 확인하는 로직
 
-                                        if(isContainCart){ // 만약장바구니에 이미 들어있는 항목이라면?
-                                            cart.plusQuantity(selectMenuItem);
+                                        if(isContainCart){ // 만약 장바구니에 이미 들어있는 항목이라면?
+                                            cart.plusQuantity(selectMenuItem); // 기존 장바구니 항목에서 수량만 +1 해줌
                                             System.out.println("\n"+selectMenuItem.getName()+"이 장바구니에 추가되었습니다.");
-                                        } else cart.addMenuToCart(cartItem); //장바구니 추가
+
+                                        } else cart.addMenuToCart(cartItem); // 중복항목 없으면 그냥 장바구니 추가
 
                                         System.out.println("-----------------------");
                                         cart.calculateTotalPrice(); // 메뉴 추가할 때마다 totalPrice 새롭게 계산
+
                                         if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴가 있다면 ORDER MENU 출력
                                             cart.printCart(); // 장바구니 목록 출력
-                                            cart.printTotalPrice();
+                                            cart.printTotalPrice(); // totalPrice 출력
                                         }
-
                                         break;
+
                                     } else if (selectOrder == 2) { //2번 취소 누르면 메뉴판으로 돌아가기
                                         break;
                                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
