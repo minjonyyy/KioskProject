@@ -47,7 +47,7 @@ public class Kiosk {
 
             // 5 누르면 장바구니 초기화
             if (selectCategoryNum==5) {
-                cart.deleteCart();
+                cart.emptyCart();
                 System.out.println("장바구니가 비워졌습니다.");
                 continue;
             }

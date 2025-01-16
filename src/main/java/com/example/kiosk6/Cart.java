@@ -29,7 +29,7 @@ public class Cart {
     }
 
     //장바구니 초기화(비우기) 메서드
-    public void deleteCart(){
+    public void emptyCart(){
         carts.clear();
     }
 
