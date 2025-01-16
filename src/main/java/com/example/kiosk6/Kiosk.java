@@ -59,15 +59,14 @@ public class Kiosk {
                 if(!cart.getCarts().isEmpty()){
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     cart.printCart();
-
-                    System.out.println("\n[ Total ]");
-                    double totalPrice = cart.printTotalPrice();
-                    System.out.print("W " + totalPrice);
+                    System.out.println("  ");
+                    cart.printTotalPrice();
 
                     System.out.println("\n1. 주문        2. 메뉴판");
                     int orderOrBack =  sc.nextInt();
                     if (orderOrBack == 1){
-                        System.out.print("주문이 완료되었습니다. 금액은 W " + totalPrice + "입니다.");
+                        System.out.print("주문이 완료되었습니다.  ");
+                        cart.printTotalPrice();
                     } else if (orderOrBack == 2) { // 2 고르면 다시 메뉴 선택지로 돌아가기
                         continue;
                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
@@ -116,9 +115,10 @@ public class Kiosk {
                                         } else cart.addMenuToCart(cartItem); //장바구니 추가
 
                                         System.out.println("--------------------");
-                                        cart.calculateTotalPrice(cartItem); // 메뉴 추가할 때마다 totalPrice 계산
+                                        cart.calculateTotalPrice(); // 메뉴 추가할 때마다 totalPrice 새롭게 계산
                                         if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴가 있다면 ORDER MENU 출력
                                             cart.printCart(); // 장바구니 목록 출력
+                                            cart.printTotalPrice();
                                         }
 
                                         break;

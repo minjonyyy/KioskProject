@@ -38,13 +38,16 @@ public class Cart {
     }
 
     // totalPrice 계산하는 메서드
-    public void calculateTotalPrice(CartItem item){
-        totalPrice += item.getPrice();
+    public void calculateTotalPrice(){
+        totalPrice = 0.0;
+        for (CartItem cartItem : carts) {
+            totalPrice += cartItem.getPrice() * cartItem.getQuantity();
+        }
     }
 
     // 계산된 totalPrice 출력하는 메서드 (이중계산 막기위해 나누어줌)
-    public double printTotalPrice(){
-        return totalPrice;
+    public void printTotalPrice(){
+        System.out.println("[ Total Price : W " + totalPrice + " ]");
     }
 
     public boolean isContainCart(MenuItem item){
