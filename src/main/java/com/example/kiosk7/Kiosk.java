@@ -6,13 +6,15 @@ import java.util.Scanner;
 public class Kiosk {
     private final List<Menu> menus;
     private final Cart cart;
+    private final Discount discount;
 
 
-    public Kiosk(List<Menu> menus, Cart cart){
+    public Kiosk(List<Menu> menus, Cart cart, Discount discount){
 
         this.menus = menus;
         this.cart = cart;
 
+        this.discount = discount;
     }
 
     public void start(){
@@ -70,6 +72,8 @@ public class Kiosk {
                     int orderOrBack =  sc.nextInt();
 
                     if (orderOrBack == 1){
+                        System.out.println("\n할인 정보를 입력해주세요.");
+                        discount.printDiscountRate();
                         System.out.print("\n주문이 완료되었습니다.  ");
                         cart.printTotalPrice();
 
