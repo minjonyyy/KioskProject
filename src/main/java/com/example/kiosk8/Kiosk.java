@@ -63,7 +63,8 @@ public class Kiosk {
                 if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴 아이템이 있을때에만 유효함
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     System.out.println("-----------------------");
-                    cart.printCart();
+                    cart.removeAndPrintCart();
+//                    cart.printCart();
 
                     double totalPrice = cart.calculateTotalPrice();
                     System.out.println("\n[ Total Price ]  W " + String.format("%.2f", totalPrice));
