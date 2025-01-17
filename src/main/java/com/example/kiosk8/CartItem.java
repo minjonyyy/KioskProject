@@ -30,4 +30,11 @@ public class CartItem {
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return getName() + " | W " + getPrice() + " | 수량 : " + getQuantity();
+    }
+
+
 }
