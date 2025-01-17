@@ -34,9 +34,10 @@ public class Main {
 
 
         Cart cart = new Cart();
+        Discount discount = new Discount();
 
         /// 키오스크 객체 생성 및 시작하는 함수 호출
-        Kiosk kiosk = new Kiosk(menus, cart);
+        Kiosk kiosk = new Kiosk(menus, cart, discount);
         kiosk.start();
     }
 }
