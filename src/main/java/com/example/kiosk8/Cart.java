@@ -34,9 +34,14 @@ public class Cart {
 
     public void removeAndPrintCart(){
         System.out.println("[ SHOPPING CART ] - 'SmokeShack'을 제외한 장바구니입니다.");
-        carts.stream()
+
+        List<CartItem> filteredCarts = carts.stream()
                 .filter(item -> !item.getName().equals("SmokeShack"))
-                .forEach(System.out::println);
+                .toList();
+
+        carts.clear();
+        carts.addAll(filteredCarts);
+        carts.forEach(System.out::println);
     }
 
 
