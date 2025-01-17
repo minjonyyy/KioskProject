@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Cart {
     private final List<CartItem> carts;
-    private double totalPrice;
 
     public Cart(){
         this.carts = new ArrayList<>();
@@ -38,17 +37,18 @@ public class Cart {
     }
 
     // totalPrice 계산하는 메서드
-    public void calculateTotalPrice(){
-        totalPrice = 0.0;
+    public double calculateTotalPrice(){
+        double totalPrice = 0.0;
         for (CartItem cartItem : carts) {
             totalPrice += cartItem.getPrice() * cartItem.getQuantity();
         }
+        return totalPrice;
     }
 
     // 계산된 totalPrice 출력하는 메서드 (이중계산 막기위해 나누어줌)
-    public void printTotalPrice(){
-        System.out.println("\n[ Total Price ]  W " + String.format("%.1f", totalPrice));
-    }
+//    public void printTotalPrice(){
+//        System.out.println("\n[ Total Price ]  W " + String.format("%.1f", totalPrice));
+//    }
 
     public boolean isContainCart(MenuItem item){
         for (CartItem cartItem : carts) {
