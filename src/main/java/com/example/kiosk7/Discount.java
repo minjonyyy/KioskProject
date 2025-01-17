@@ -19,19 +19,21 @@ public class Discount {
             this.type = type;
         }
 
+        public int getNum(){ return num; }
+        public String getType(){ return type; }
         public int getDiscountRate(){ return discountRate; }
     }
 
     public void printDiscountRate(){
         for (DiscountType type : DiscountType.values()){
-            System.out.println(type.num + "."+type.type +"  : "+ type.discountRate + "%");
+            System.out.println(type.getNum() + "."+type.getType() +"  : "+ type.getDiscountRate() + "%");
         }
     }
 
     public double calculateDiscount(int discountTypeNum, double totalPrice){
         for (DiscountType type : DiscountType.values()){
-            if ( discountTypeNum == type.num){
-                totalPrice = totalPrice * (1.0 - type.discountRate * 0.01);
+            if ( discountTypeNum == type.getNum()){
+                totalPrice = totalPrice * (1.0 - type.getDiscountRate() * 0.01);
             }
         }
         return totalPrice;
