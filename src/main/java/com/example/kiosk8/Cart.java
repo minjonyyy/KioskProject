@@ -3,6 +3,7 @@ package com.example.kiosk8;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cart {
     private final List<CartItem> carts;
@@ -30,6 +31,14 @@ public class Cart {
     public void emptyCart(){
         carts.clear();
     }
+
+    public void removeAndPrintCart(){
+        System.out.println("[ SHOPPING CART ] - 'SmokeShack'을 제외한 장바구니입니다.");
+        carts.stream()
+                .filter(item -> !item.getName().equals("SmokeShack"))
+                .forEach(System.out::println);
+    }
+
 
     //장바구니 getter 메서드
     public List<CartItem> getCarts(){
