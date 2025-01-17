@@ -64,9 +64,11 @@ public class Kiosk {
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     System.out.println("-----------------------");
                     cart.printCart();
-                    cart.printTotalPrice();
-                    System.out.println("-----------------------");
 
+                    double totalPrice = cart.calculateTotalPrice();
+                    System.out.println("\n[ Total Price ]  W " + String.format("%.2f", totalPrice));
+
+                    System.out.println("-----------------------");
                     System.out.println("1. 주문        2. 메뉴판");
                     System.out.print("선택 : ");
                     int orderOrBack =  sc.nextInt();
@@ -74,8 +76,13 @@ public class Kiosk {
                     if (orderOrBack == 1){
                         System.out.println("\n할인 정보를 입력해주세요.");
                         discount.printDiscountRate();
-                        System.out.print("\n주문이 완료되었습니다.  ");
-                        cart.printTotalPrice();
+                        System.out.print("선택 : ");
+                        int discountTypeNum =  sc.nextInt();
+
+                        double realTotalPrice = discount.calculateDiscount(discountTypeNum, totalPrice);
+
+                        System.out.print("\n주문이 완료되었습니다. 금액은 W "+ String.format("%.2f", realTotalPrice) +"입니다.");
+
 
                     } else if (orderOrBack == 2) { // 2 고르면 다시 메뉴 선택지로 돌아가기
                         continue;
@@ -134,7 +141,9 @@ public class Kiosk {
 
                                         if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴가 있다면 ORDER MENU 출력
                                             cart.printCart(); // 장바구니 목록 출력
-                                            cart.printTotalPrice(); // totalPrice 출력
+
+                                            double totalPrice = cart.calculateTotalPrice();
+                                            System.out.println("\n[ Total Price ]  W " + String.format("%.1f", totalPrice));
                                         }
                                         break;
 
