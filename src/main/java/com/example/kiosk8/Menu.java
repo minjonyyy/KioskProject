@@ -25,9 +25,14 @@ public class Menu {
     }
 
     public void printMenuItems() {
-        for(int i=0; i<menuItems.size(); i++){
-            System.out.println((i+1) + ". " + menuItems.get(i).getName() + " | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getInfo());
-        }
+//        for(int i=0; i<menuItems.size(); i++){
+//            System.out.println((i+1) + ". " + menuItems.get(i).getName() + " | W " + menuItems.get(i).getPrice() + " | " + menuItems.get(i).getInfo());
+//        }
+
+        // 스트림 사용하여 menuItems 출력
+        menuItems.stream()
+                .map(item -> (menuItems.indexOf(item)+1)+". "+item.getName() + " | W " + item.getPrice() + " | " + item.getInfo())
+                .forEach(System.out::println);
     }
 
     public List<MenuItem> getMenuItems(){
