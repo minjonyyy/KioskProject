@@ -53,13 +53,12 @@ public class Cart {
     }
 
     // totalPrice 계산하는 메서드
-    public double calculateTotalPrice(){
-        double totalPrice = 0.0;
-        for (CartItem cartItem : carts) {
-            totalPrice += cartItem.getPrice() * cartItem.getQuantity();
-        }
-        return totalPrice;
+    public double calculateTotalPrice() {
+        return carts.stream()
+                .mapToDouble(cartItem -> cartItem.getPrice() * cartItem.getQuantity())
+                .sum();
     }
+
 
     // 계산된 totalPrice 출력하는 메서드 (이중계산 막기위해 나누어줌)
 //    public void printTotalPrice(){

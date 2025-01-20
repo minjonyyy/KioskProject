@@ -1,5 +1,7 @@
 package com.example.kiosk8;
 
+import java.util.Arrays;
+
 public class Discount {
 
     // 할인 정보가 담겨있는 enum DiscountType
@@ -33,12 +35,11 @@ public class Discount {
     }
 
     // 할인 정보로 최종 totalPrice를 계산해주는 메서드
-    public double calculateDiscount(int discountTypeNum, double totalPrice){
-        for (DiscountType type : DiscountType.values()){
-            if ( discountTypeNum == type.getNum()){
-                totalPrice = totalPrice * (1.0 - type.getDiscountRate() * 0.01);
-            }
-        }
-        return totalPrice;
+    public double calculateDiscount(int discountTypeNum, double totalPrice) {
+        return Arrays.stream(DiscountType.values()) // Enum 배열을 스트림으로 변환
+                .filter(type -> discountTypeNum == type.getNum())
+                .findFirst()
+                .map(type -> totalPrice * (1.0 - type.getDiscountRate() * 0.01))
+                .orElse(totalPrice);
     }
 }
