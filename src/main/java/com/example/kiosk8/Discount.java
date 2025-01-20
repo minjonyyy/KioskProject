@@ -32,7 +32,7 @@ public class Discount {
         }
     }
 
-    // 할인율 계산해주는 메서드
+    // 할인 정보로 최종 totalPrice를 계산해주는 메서드
     public double calculateDiscount(int discountTypeNum, double totalPrice){
         for (DiscountType type : DiscountType.values()){
             if ( discountTypeNum == type.getNum()){

@@ -32,16 +32,18 @@ public class Cart {
         carts.clear();
     }
 
+    // 특정 이름을 가진 메뉴를 제외하고 다시 출력해주는 메서드
     public void removeAndPrintCart(){
         System.out.println("[ SHOPPING CART ] - 'SmokeShack'을 제외한 장바구니입니다.");
 
+        //스트림 사용하여 필터링
         List<CartItem> filteredCarts = carts.stream()
                 .filter(item -> !item.getName().equals("SmokeShack"))
                 .toList();
 
-        carts.clear();
-        carts.addAll(filteredCarts);
-        carts.forEach(System.out::println);
+        carts.clear(); //기존 장바구니 초기화
+        carts.addAll(filteredCarts); // 특정 이름을 가진 메뉴 제외한 filterCarts 리스트를 기존 장바구니로 이동
+        carts.forEach(System.out::println); // 장바구니 출력
     }
 
 
@@ -64,6 +66,7 @@ public class Cart {
 //        System.out.println("\n[ Total Price ]  W " + String.format("%.1f", totalPrice));
 //    }
 
+    // 특정 메뉴 아이템이 장바구니에 들어있는지 확인하는 메서드
     public boolean isContainCart(MenuItem item){
         for (CartItem cartItem : carts) {
             if (item.getName().equals(cartItem.getName())) {
@@ -73,6 +76,7 @@ public class Cart {
         return false;
     }
 
+    // 특정 메뉴 아이템의 수량을 +1 해주는 메서드
     public void plusQuantity(MenuItem item){
         for (CartItem cartItem : carts) {
             if (item.getName().equals(cartItem.getName())) {

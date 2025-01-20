@@ -63,10 +63,10 @@ public class Kiosk {
                 if(!cart.getCarts().isEmpty()){ //장바구니에 메뉴 아이템이 있을때에만 유효함
                     System.out.println("아래와 같이 주문하시겠습니까?\n");
                     System.out.println("-----------------------");
-                    cart.removeAndPrintCart();
+                    cart.removeAndPrintCart(); //특정 이름을 가진 메뉴가 있는지 확인 후 장바구니 출력하는 로직
 //                    cart.printCart();
 
-                    double totalPrice = cart.calculateTotalPrice();
+                    double totalPrice = cart.calculateTotalPrice(); //현재 장바구니의 totalPrice 계산
                     System.out.println("\n[ Total Price ]  W " + String.format("%.2f", totalPrice));
 
                     System.out.println("-----------------------");
@@ -76,11 +76,11 @@ public class Kiosk {
 
                     if (orderOrBack == 1){
                         System.out.println("\n할인 정보를 입력해주세요.");
-                        discount.printDiscountRate();
+                        discount.printDiscountRate(); //할인 정보 출력
                         System.out.print("선택 : ");
                         int discountTypeNum =  sc.nextInt();
 
-                        double realTotalPrice = discount.calculateDiscount(discountTypeNum, totalPrice);
+                        double realTotalPrice = discount.calculateDiscount(discountTypeNum, totalPrice); //할인 정보로 할인율 적용하여 최종 totalPrice 계산해줌
 
                         System.out.print("\n주문이 완료되었습니다. 금액은 W "+ String.format("%.2f", realTotalPrice) +"입니다.");
 
@@ -91,6 +91,9 @@ public class Kiosk {
                     } else System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                     break; // 주문 완료시 프로그램 종료
                 }
+            } else {
+                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+
             }
 
             try { //예외 처리를 위한 try-catch문
