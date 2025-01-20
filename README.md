@@ -236,3 +236,7 @@ main 클래스에 메뉴판 리스트도 생성하고 추가하였다. 이 메�
 * 할인 정보가 담겨있는 `enum DiscountType`
 ![image](https://github.com/user-attachments/assets/2925a54c-b274-432a-8005-a4ef5a4ee49c)
 * 할인 정보를 반영하여 최종 totalPrice를 계산해주는 `calculateDiscount()` 메서드
+
+***
+
+### 🪄 [키오스크 과제 트러블 슈팅](https://velog.io/@minjonyyy/JAVA-%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC-%EA%B3%BC%EC%A0%9C-%EC%A7%84%ED%96%89) 보러가기
