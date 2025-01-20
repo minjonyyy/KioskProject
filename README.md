@@ -1,5 +1,7 @@
 ## 🖥️ 키오스크 과제
 
+### 🪄 [키오스크 과제 트러블 슈팅](https://velog.io/@minjonyyy/JAVA-%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC-%EA%B3%BC%EC%A0%9C-%EC%A7%84%ED%96%89) 보러가기
+
 ## 📍필수 기능
 ### 단계별 요구사항
 ### 1️⃣LV.1 기본적인 키오스크를 프로그래밍 해보자
@@ -238,5 +240,3 @@ main 클래스에 메뉴판 리스트도 생성하고 추가하였다. 이 메�
 * 할인 정보를 반영하여 최종 totalPrice를 계산해주는 `calculateDiscount()` 메서드
 
 ***
-
-### 🪄 [키오스크 과제 트러블 슈팅](https://velog.io/@minjonyyy/JAVA-%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC-%EA%B3%BC%EC%A0%9C-%EC%A7%84%ED%96%89) 보러가기
