@@ -39,7 +39,7 @@ public class Kiosk {
                 System.out.println("5. Cancel       | 진행중인 주문을 취소합니다. (장바구니 비우기)");
             }
 
-            //-------------- 사용자 선택1 (메뉴판 선택) -------------------------
+            //-------------- 사용자 선택1 : 메뉴판(카테고리) 선택 -------------------------
             System.out.print("\n메뉴판을 선택해주세요. : ");
             int selectCategoryNum = sc.nextInt();
 
@@ -101,13 +101,13 @@ public class Kiosk {
 
                 if (selectCategoryNum>=1 && selectCategoryNum<=menus.size()){
                     while(true){ // 뒤로가기 기능을 위한 2중 반복문
-                        // 메뉴 아이템들 출력
+                        // 선택한 메뉴 카테고리의 메뉴 아이템들 출력
                         System.out.println("-----------------------");
                         System.out.println("[ " + selectCategory.getMenuCategory() + " MENU ]");
                         selectCategory.printMenuItems();
                         System.out.println("0. 뒤로가기");
 
-                        //-------------- 사용자 선택2 (메뉴 아이템 선택) -------------------------
+                        //-------------- 사용자 선택2 : 메뉴 아이템 선택 -------------------------
                         System.out.print("\n메뉴를 골라주세요. : ");
                         int selectMenuItemNum = sc.nextInt();
 
@@ -118,7 +118,6 @@ public class Kiosk {
                         try { //예외 처리를 위한 try-catch문
                             MenuItem selectMenuItem = selectCategory.getMenuItems().get(selectMenuItemNum-1);
 
-                            // 구현해두었던 printMenuItems() 메서드를 사용할 수는 없나? 수정해보기 (59, 62~63)
                             if (selectMenuItemNum>=1 && selectMenuItemNum <= selectCategory.getMenuItems().size()){
                                 System.out.println("선택한 메뉴: < " + selectMenuItem.getName() + " | " + "W " + selectMenuItem.getPrice() + " | " + selectMenuItem.getInfo() + " >");
 
